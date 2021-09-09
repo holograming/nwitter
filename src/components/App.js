@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import AppRouter from "./Router";
+//https://create-react-app.dev/docs/importing-a-component#absolute-imports
+import AppRouter from "components/Router";
+import { authService } from "fBase";
 
 // Conntect to route first route
 function App() {
-  const [isLoggedIn, setLoggedIn] = useState(false); // useState default = fase
+  const [isLoggedIn, setLoggedIn] = useState(authService.currentUser); 
   return (
   <>
     <AppRouter isLoggedIn={isLoggedIn} />

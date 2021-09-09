@@ -1,5 +1,9 @@
+// Firebase
+// module 이름과 새로 생성한 파일이름 중복시 혼동을 방지하기 위해 이름 수정
+
 // Import the functions you need from the SDKs you need
-import * as firebase from "firebase/app"
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -12,4 +16,5 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export default firebase.initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig);
+export const authService = getAuth();
