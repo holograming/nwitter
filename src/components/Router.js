@@ -1,29 +1,26 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Auth from "../routes/Auth";
 import Home from "../routes/Home";
 
 // Hooks components
-const AppRouter = () => {
-    const [isLoggedIn, setLoggedIn] = useState(false); // useState default = fase
+const AppRouter = ({ isLoggedIn }) => {
     return (
         <Router>
             <Switch>
-                {
-                    isLoggedIn ? (
-                      <>
-                        <Route exact path="/">
-                          <Home />
-                        </Route>
-                      </> 
-                    ) : (
-                      <>
-                        <Route exact path="/">
-                          <Auth />
-                        </Route>
-                      </>
-                    )
-                }
+                {isLoggedIn ? (
+                  <>
+                    <Route exact path="/">
+                      <Home />
+                    </Route>
+                  </> 
+                ) : (
+                  <>
+                    <Route exact path="/">
+                      <Auth />
+                    </Route>
+                  </>
+                )}
             </Switch>
         </Router>
     );
