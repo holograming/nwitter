@@ -1,39 +1,57 @@
+import { authService, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fBase";
 import React, { useState } from "react";
 
 const Auth = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    // Create Account test!
+    const [newAccount, setNewAccount] = useState(true);
     const onChange = (event) => {
-        const {target: {name, value}} = event;
-        if(name == "email") {
+        const {target: 
+            {name, value}
+        } = event;
+        if(name === "email") {
             setEmail(value);
-        } else if(name == "password") {
+        } else if(name === "password") {
             setPassword(value);
         }
     };
-    const onSubmit = (event) => {
+    const onSubmit = async(event) => {
         event.preventDefault();
+        try
+        {
+            let data;
+            if(newAccount){
+                data = await createUserWithEmailAndPassword(authService, email, password);
+            } else {
+                data = await signInWithEmailAndPassword(authService, email, password);
+            }
+            console.log(data);
+        } catch(error) {
+           console.log(error);
+        }
+    
     }
     return (
     <div>
         <form onSubmit={onSubmit}>
             <input 
             name="email" 
-            type="text" 
+            type="email" 
             placeholder="Email" 
             required 
             value={email}
-            onChange={onChange}
+            onChange={onChange} // when every keypressed..
             />
             <input 
             name="password" 
-            type="text" 
+            type="password" 
             placeholder="Password" 
             required 
             value={password}
             onChange={onChange}
             />
-            <input type="submit" value="Log in" />
+            <input type="submit" value={newAccount? "Create Account" : "Log In"} />
         </form>
         <div>
             <button>Continue with Google</button>
