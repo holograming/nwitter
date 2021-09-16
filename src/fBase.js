@@ -6,7 +6,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup,
          GoogleAuthProvider, 
          GithubAuthProvider } from "firebase/auth";
-import "firebase/database";
+
+import { getFirestore, addDoc, collection } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -24,3 +25,6 @@ initializeApp(firebaseConfig);
 // Do it once. export!
 export const authService = getAuth();
 export { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider };
+// about Firestore
+export const dbService = getFirestore();
+export { addDoc, collection };
