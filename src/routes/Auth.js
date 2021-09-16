@@ -46,7 +46,7 @@ const Auth = () => {
         }
         provider.addScope('profile');
         provider.addScope('email');
-        const result = await signInWithPopup(authService, provider);
+        await signInWithPopup(authService, provider);
     }
 
     return (

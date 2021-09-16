@@ -7,16 +7,18 @@ import { authService } from "fBase";
 function App() {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false); 
+  const [userObj, setUserObj] = useState(null);
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       setLoggedIn(user?true:false);
+      setUserObj(user?user:null);
       setInit(true);
     }
     );
   }, []);
   return (
   <>
-    {init? <AppRouter isLoggedIn={isLoggedIn}/> : "Initializing......"}
+    {init? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj}/> : "Initializing......"}
     <footer>&copy; {new Date().getFullYear()} Nwitter customized by Hologramer </footer>
   </>
   ); // pass to prop

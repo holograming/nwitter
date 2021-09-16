@@ -7,7 +7,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
          GoogleAuthProvider, 
          GithubAuthProvider } from "firebase/auth";
 
-import { getFirestore, addDoc, collection, getDocs } from "firebase/firestore";
+import { getFirestore, addDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -27,4 +27,4 @@ export const authService = getAuth();
 export { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider };
 // about Firestore
 export const dbService = getFirestore();
-export { addDoc, collection, getDocs };
+export { addDoc, collection, getDocs, onSnapshot };
