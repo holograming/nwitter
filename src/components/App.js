@@ -6,11 +6,10 @@ import { authService } from "fBase";
 // Conntect to route first route
 function App() {
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setLoggedIn] = useState(false); 
   const [userObj, setUserObj] = useState(null);
   useEffect(() => {
+    // When app initialize or when user login, when user logout.
     authService.onAuthStateChanged((user) => {
-      setLoggedIn(user?true:false);
       setUserObj(user?user:null);
       setInit(true);
     }
@@ -18,7 +17,7 @@ function App() {
   }, []);
   return (
   <>
-    {init? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj}/> : "Initializing......"}
+    {init? <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj}/> : "Initializing......"}
     <footer>&copy; {new Date().getFullYear()} Nwitter customized by Hologramer </footer>
   </>
   ); // pass to prop

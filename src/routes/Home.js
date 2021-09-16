@@ -18,6 +18,7 @@ const Home = ({ userObj }) => {
     /// load nweets
     const [nweets, setNweets] = useState([]);
     useEffect(()=> {
+        // snapshot : to prevent re-render 
      onSnapshot(collection(dbService, "nweets"), snapshot => {
          const nweetArrary = snapshot.docs.map(doc => ({
              id: doc.id,
@@ -27,7 +28,7 @@ const Home = ({ userObj }) => {
      });
     }, []);
     
-    console.log(userObj);
+    //
 
     const onChange = (event) => {
         const {
