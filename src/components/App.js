@@ -42,7 +42,6 @@ function App() {
   return (
   <>
     {init? <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} refreshUser={refreshUser}/> : "Initializing......"}
-    <footer>&copy; {new Date().getFullYear()} Nwitter customized by Hologramer </footer>
   </>
   ); // pass to prop
 }
