@@ -8,7 +8,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
          GithubAuthProvider } from "firebase/auth";
 
 import { getFirestore, addDoc, collection, getDocs, onSnapshot, doc, deleteDoc, updateDoc } from "firebase/firestore";
-import { getStorage, ref, uploadString } from "firebase/storage";
+import { getStorage, ref, uploadString, getDownloadURL } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -31,4 +31,4 @@ export const dbService = getFirestore();
 export { addDoc, collection, getDocs, onSnapshot, doc, deleteDoc, updateDoc };
 // about Storage
 export const storageService = getStorage();
-export { ref, uploadString };
+export { ref, uploadString, getDownloadURL };

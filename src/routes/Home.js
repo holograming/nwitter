@@ -1,6 +1,8 @@
 import Nweet from "components/Nweet";
 import { v4 as uuidv4 } from 'uuid'; // from https://www.npmjs.com/package/uuid
-import { addDoc, collection, dbService, onSnapshot, storageService, ref, uploadString } from "fBase";
+import { addDoc, collection, dbService, onSnapshot, 
+         storageService, ref, uploadString, getDownloadURL
+        } from "fBase";
 import React, { useEffect, useState } from "react";
 
 const Home = ({ userObj }) => {
@@ -8,15 +10,21 @@ const Home = ({ userObj }) => {
     const [nweet, setNweet] = useState("");
     const onSubmit = async (event) => {
         event.preventDefault();
-        const fileRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
-        const response = await uploadString(fileRef, attachment, "data_url"); // data_url was we used 'readAsDataURL' function.
-        console.log(response);
-        // await addDoc(collection(dbService, "nweets"), {
-        //     text: nweet,
-        //     createdAt: Date.now(),
-        //     creatorId:userObj.uid,
-        // });
-        // setNweet("");
+        let attachmentUrl = "";
+
+        if(attachment != "") {
+            const attachmentRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
+            const response = await uploadString(attachmentRef, attachment, "data_url"); // data_url was we used 'readAsDataURL' function.
+            attachmentUrl = await getDownloadURL(attachmentRef);
+        }
+        await addDoc(collection(dbService, "nweets"), {
+            text: nweet,
+            createdAt: Date.now(),
+            creatorId:userObj.uid,
+            attachmentUrl,
+        });
+        setNweet("");
+        setAttachment("");
     };
     const onChange = (event) => {
         const {
