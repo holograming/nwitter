@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { authService, updateProfile, collection, dbService, getDocs, query, where, orderBy } from "fBase";
 import { useHistory } from "react-router";
 
-const Profile = ({ userObj }) => {
+const Profile = ({ userObj, refreshUser }) => {
     
     const history = useHistory();
     const onLogoutClick = () => { 
@@ -41,7 +41,7 @@ const Profile = ({ userObj }) => {
             const response = await updateProfile(authService.currentUser, {
                 displayName: newDisplayName,
             });
-            console.log(response);
+            refreshUser();
         }
     }
 
