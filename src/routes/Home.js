@@ -1,5 +1,6 @@
 import Nweet from "components/Nweet";
-import { addDoc, collection, dbService, onSnapshot } from "fBase";
+import { v4 as uuidv4 } from 'uuid'; // from https://www.npmjs.com/package/uuid
+import { addDoc, collection, dbService, onSnapshot, storageService, ref, uploadString } from "fBase";
 import React, { useEffect, useState } from "react";
 
 const Home = ({ userObj }) => {
@@ -7,12 +8,15 @@ const Home = ({ userObj }) => {
     const [nweet, setNweet] = useState("");
     const onSubmit = async (event) => {
         event.preventDefault();
-        await addDoc(collection(dbService, "nweets"), {
-            text: nweet,
-            createdAt: Date.now(),
-            creatorId:userObj.uid,
-        });
-        setNweet("");
+        const fileRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
+        const response = await uploadString(fileRef, attachment, "data_url"); // data_url was we used 'readAsDataURL' function.
+        console.log(response);
+        // await addDoc(collection(dbService, "nweets"), {
+        //     text: nweet,
+        //     createdAt: Date.now(),
+        //     creatorId:userObj.uid,
+        // });
+        // setNweet("");
     };
     const onChange = (event) => {
         const {
