@@ -47,8 +47,6 @@ const Home = ({ userObj }) => {
     
     const [attachment, setAttachment] = useState();
     const onFileChange = (event) => {
-        console.log(event.target.files);
-        // 
         const {
             target:{ files },
         } = event;
