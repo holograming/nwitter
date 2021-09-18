@@ -7,7 +7,6 @@ const Nweet = ({nweetObj, isOwner}) => {
     
     const onDeleteClick = async() => {
         const ok = window.confirm("Are you sure you want to delete this nweet??");
-        
         if(ok) {
             await deleteDoc(doc(dbService, `nweets/${nweetObj.id}`));
         }
@@ -16,7 +15,7 @@ const Nweet = ({nweetObj, isOwner}) => {
     const toggleEditing = () => setEditing((prev) => !prev);
     const onSubmit = async (event) => {
         event.preventDefault();
-        //console.log(nweetObj, newNweet);
+        
         await updateDoc(doc(dbService, `nweets/${nweetObj.id}`), {
             text:newNweet,
         });
