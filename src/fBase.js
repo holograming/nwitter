@@ -3,11 +3,11 @@
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup,
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile,
          GoogleAuthProvider, 
          GithubAuthProvider } from "firebase/auth";
 
-import { getFirestore, addDoc, collection, getDocs, onSnapshot, doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { getFirestore, addDoc, collection, getDocs, onSnapshot, doc, deleteDoc, updateDoc, query, where, orderBy } from "firebase/firestore";
 import { getStorage, ref, uploadString, getDownloadURL, deleteObject } from "firebase/storage";
 
 // Your web app's Firebase configuration
@@ -25,10 +25,10 @@ initializeApp(firebaseConfig);
 
 // Do it once. export!
 export const authService = getAuth();
-export { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider };
+export { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile, GoogleAuthProvider, GithubAuthProvider };
 // about Firestore
 export const dbService = getFirestore();
-export { addDoc, collection, getDocs, onSnapshot, doc, deleteDoc, updateDoc };
+export { addDoc, collection, getDocs, onSnapshot, doc, deleteDoc, updateDoc, query, where, orderBy };
 // about Storage
 export const storageService = getStorage();
 export { ref, uploadString, getDownloadURL, deleteObject };

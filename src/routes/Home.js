@@ -12,9 +12,9 @@ const Home = ({ userObj }) => {
         event.preventDefault();
         let attachmentUrl = "";
 
-        if(attachment != "") {
+        if(attachment !== "") {
             const attachmentRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
-            const response = await uploadString(attachmentRef, attachment, "data_url"); // data_url was we used 'readAsDataURL' function.
+            await uploadString(attachmentRef, attachment, "data_url"); // data_url was we used 'readAsDataURL' function.
             attachmentUrl = await getDownloadURL(attachmentRef);
         }
         await addDoc(collection(dbService, "nweets"), {
@@ -45,7 +45,7 @@ const Home = ({ userObj }) => {
      });
     }, []);
     
-    const [attachment, setAttachment] = useState();
+    const [attachment, setAttachment] = useState("");
     const onFileChange = (event) => {
         const {
             target:{ files },
