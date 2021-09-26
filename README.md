@@ -13,7 +13,7 @@ https://nomadcoders.co/nwitter/lobby.
 ### 결과물
 - [Nwitter 링크](https://holograming.github.io/nwitter)
 
-<img src="/img/feed.PNG" width="517" height="469">
+<img src="img/feed.png" width="517" height="469">
 
-<img src="/img/profile.PNG" width="517" height="469">
+<img src="img/profile.PNG" width="517" height="469">
 
