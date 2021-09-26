@@ -15,5 +15,5 @@ https://nomadcoders.co/nwitter/lobby.
 
 <img src="img/feed.png" width="517" height="469">
 
-<img src="img/profile.PNG" width="517" height="469">
+<img src="img/profile.png" width="517" height="469">
 
