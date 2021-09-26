@@ -10,8 +10,8 @@ https://nomadcoders.co/nwitter/lobby.
  - git commit rule 적용하며 commit 하기
  - 개발 텐션 끌어올리기
 
-### Result
-[Nwitter](https://holograming.github.io/nwitter)
+### 결과물
+- [Nwitter 링크](https://holograming.github.io/nwitter)
 
 <img src="/img/feed.PNG" width="517" height="469">
 
