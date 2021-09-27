@@ -1,14 +1,15 @@
 import Nweet from "components/Nweet";
 import NweetFactory from "components/NweetFactory";
-import { collection, dbService, onSnapshot } from "fBase";
+import { collection, dbService, onSnapshot, query, orderBy } from "fBase";
 import React, { useEffect, useState } from "react";
 
 const Home = ({ userObj }) => {
     /// load nweets
     const [nweets, setNweets] = useState([]);
+    const q = query(collection(dbService, "nweets"), orderBy("createdAt", "desc"));
     useEffect(()=> {
         // snapshot : to prevent re-render 
-     onSnapshot(collection(dbService, "nweets"), snapshot => {
+     onSnapshot(q, snapshot => {
          const nweetArrary = snapshot.docs.map(doc => ({
              id: doc.id,
              ...doc.data()}
